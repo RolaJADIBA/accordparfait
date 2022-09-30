@@ -1,0 +1,43 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Numerique{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-3">
+
+        <h1>Inclusion Numérique: {{numerique.titre}}</h1>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ numerique.id }}</td>
+                </tr>
+                <tr>
+                    <th>Titre</th>
+                    <td>{{ numerique.titre }}</td>
+                </tr>
+                <tr>
+                    <th>Descriptions</th>
+                    <td>{{ numerique.descriptions }}</td>
+                </tr>
+                <tr>
+                    <th>Images</th>
+                    {# <td>{{ numerique.images ? numerique.images|json_encode : '' }}</td> #}
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="col-md-2">
+
+            <a href="{{ path('numerique_index') }}" class="btn btn-warning btn-sm text-white">retour à la liste</a>
+
+            <a href="{{ path('numerique_edit', {'id': numerique.id}) }}" class="btn btn-secondary btn-sm">edit</a>
+
+            {{ include('admin/numerique/_delete_form.html.twig') }}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+<div class="navigation">
+    <ul>
+        {# <li class="text-center mt-3">
+            <a href="#">
+                <span class="icon">
+                    <i class="fab fa-apple"></i>
+                </span>
+                <span class="title">
+                    <h2>Marque</h2>
+                </span>
+                <h5><strong>Administration</strong></h5>
+            </a>
+        </li> #}
+        <li>
+            <a href="{{ path('admin') }}">
+                <span class="icon"><i class="fas fa-home" style="color: #1370d4;"></i></span>
+                <span class="title">Tableau de bord </span>
+            </a>
+        </li>
+        <li>
+            <a href="{{path('user_admin')}}">
+                <span class="icon"><i class="fas fa-users"></i></span>
+                <span class="title">Users</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{path('evenements_index')}}">
+                <span class="icon"><i class="fa fa-calendar fa-lg"></i></span>
+                <span class="title">Evènements</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{path('autonomie_index')}}">
+                <span class="icon"><i class="fas fa-list-alt"></i></span>
+                <span class="title">Insertion Sociale</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{path('complement_index')}}">
+                <span class="icon"><i class="fa fa-language fa-lg"></i></span>
+                <span class="title">Complément Linguistique</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{path('delf_index')}}">
+                <span class="icon"><i class="fa fa-deaf fa-lg"></i></span>
+                <span class="title">Préparation au DELF</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{path('mobilite_index')}}">
+                <span class="icon"><i class="fa fa-bus fa-lg"></i></span>
+                <span class="title">Mobilité</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{path('numerique_index')}}">
+                <span class="icon"><i class="fa fa-laptop fa-lg"></i></span>
+                <span class="title">Inclusion Numérique</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{path('jardin_index')}}">
+                <span class="icon"><i class="fa fa-leaf fa-lg"></i></span>
+                <span class="title">Jardin Solidaire</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{path('soutien_index')}}">
+                <span class="icon"><i class="fa fa-child fa-lg"></i></span>
+                <span class="title">Soutien aux familles</span>
+            </a>
+        </li>
+
+    </ul>
+</div>

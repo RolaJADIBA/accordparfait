@@ -1,0 +1,61 @@
+<!-- Modal -->
+<div class="modal fade" id="evenement" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"  id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="date"></p>
+        <p id="description"></p>
+        {# <span id='image'></span> #}
+        <img src="" class="x" height="200" width="300" alt="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-trigger" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block javascripts %}
+<script src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+
+<script>
+  // $('#evenement').modal('hide');
+  $(document).ready(function(){
+    $('.details').click(function(){
+      const id = $(this).attr('data-id');
+      $.ajax({
+        url: '/evenement/details/' + id,
+        type: 'GET',
+        data: {
+          'id' : id
+        },
+        success:function(data) {
+          console.log(data);
+          $('.modal-title').html(data.titre);
+
+          let dte = data.date;
+          var d=new Date(dte);
+          var day = d.getDate();
+          var month= d.getMonth()+1;
+          var year = d.getFullYear();
+
+          $('#date').html(day+" / "+month+" / "+year);
+
+          $('#description').html(data.description);
+
+          let photo = data.imageChoisi;
+          console.log(photo);
+          $('.x').attr('src', "http://www.laccord-parfait.fr/images/image_choisi/" + photo)
+          $('.x').attr('alt', photo)
+        }
+      })
+    });
+  });
+</script>
+{% endblock %}
+
+

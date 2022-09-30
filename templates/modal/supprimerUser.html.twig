@@ -1,0 +1,39 @@
+<!-- Modal -->
+<div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-warning" id="exampleModalLabel"><span></span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-muted">
+        {# {% include "annonce_admin/_form.html.twig" %} #}
+        <p></p>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-danger text-white modal-delete">Supprimer</a>
+        <button type="button" class="btn btn-secondary modal-trigger" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% block javascripts %}
+<script>
+    window.onload = () =>{
+
+        let supprimers = document.querySelectorAll(".modal-trigger");
+        console.log(supprimers);
+        for(let supprimer of supprimers){
+            supprimer.addEventListener("click", function () {
+                // document.querySelector(".modal-title span").innerText = `Are you sure you want de supprimer your account "${this.dataset.titre}"`
+                document.querySelector(".modal-footer a").href = `/user/delete/${this.dataset.user}`
+                // document.querySelector(".modal-footer a").href = `/user/supprimer/`
+                document.querySelector(".modal-body p").innerText = `Êtes vous sûr(e) de vouloir supprimer votre compte "${this.dataset.prenom} ${this.dataset.nom}"`
+            })
+        }
+
+    }
+</script>
+{% endblock %}

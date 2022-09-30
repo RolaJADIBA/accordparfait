@@ -1,0 +1,47 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Mobilite{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-3">
+
+        <h3>Mobilite {{mobilite.titre}}</h3>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ mobilite.id }}</td>
+                </tr>
+                <tr>
+                    <th>Titre</th>
+                    <td>{{ mobilite.titre }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ mobilite.description }}</td>
+                </tr>
+                <tr>
+                    <th>Images</th>
+                    {# <td>{{ mobilite.Images ? mobilite.Images|json_encode : '' }}</td> #}
+                    <td>
+                        {# <img src="{{asset('images/mobilite/' ~ mobilite.images|first)}}" height="100" alt="{{mobilite.titre}}"> #}
+                        {% for image in mobilite.images %}
+                            <img src="{{asset('images/mobilite/' ~ image)}}" height="100" alt="{{image}}">
+                        {% endfor %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="col-md-2">
+            <a href="{{ path('mobilite_index') }}" class="btn btn-warning btn-sm text-white">retour à la liste</a>
+
+            <a href="{{ path('mobilite_edit', {'id': mobilite.id}) }}" class="btn btn-secondary btn-sm">edit</a>
+
+            {{ include('admin/mobilite/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+{% endblock %}

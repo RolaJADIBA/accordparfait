@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+<main class="login">
+
+	{% for flashError in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+	{% endfor %}
+
+	<section>
+
+		<div class="imgBx">
+			<img src="{{asset('images/login.jpeg')}}" alt="logo">
+		</div>
+
+		<div class="contentBx">
+        
+			<div class="formBx">
+
+				<h2>S'inscrire</h2>
+
+				{{ form_start(registrationForm) }}
+
+				<div class="inputBx">
+					{{ form_row(registrationForm.prenom, {
+						label: "Prenom"
+					}) }}
+				</div>
+
+				<div class="inputBx">
+					{{ form_row(registrationForm.nom, {
+						label: "nom"
+					}) }}
+				</div>
+
+				{# <div class="inputBx">
+					{{ form_row(registrationForm.username, {
+						label: ""
+					}) }}
+				</div> #}
+
+				<div class="inputBx">
+					{{ form_row(registrationForm.email) }}
+				</div>
+
+				<div class="inputBx">
+					{{ form_row(registrationForm.plainPassword, {
+                    label: 'Mot de passe'
+                }) }}
+				</div>
+
+				<div class="inputBx">
+					{{ form_row(registrationForm.role) }}
+				</div>
+
+				<div class="mt-3">
+					{{ form_widget(registrationForm.photo) }}
+				</div>
+
+				<div class="mb-5 mt-3">
+					{{ form_row(registrationForm.agreeTerms) }}
+				</div>
+
+				<div class="inputBx">
+					<button type="submit">S'inscrire</button>
+				</div>
+				{{ form_end(registrationForm) }}
+        </div>
+
+    </section>
+</main>
+
+{% endblock %}

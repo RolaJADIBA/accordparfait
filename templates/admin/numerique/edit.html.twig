@@ -1,0 +1,22 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Modifier Numerique{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-8">
+
+            <h3>Modifier Numerique</h3>
+
+            {{ include('admin/numerique/_form.html.twig', {'button_label': 'Update'}) }}
+
+            <a href="{{ path('numerique_index') }}" class="btn btn-warning btn-sm text-white">retour à la liste</a>
+
+            {{ include('admin/numerique/_delete_form.html.twig') }}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

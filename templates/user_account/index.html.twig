@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User Compte{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <h2 class="titre">{{user.prenom}} {{user.nom}}</h2>
+                <p class="mt-3">{{user.email}}</p>
+                <p class="mt-3">{{user.role}}</p>
+                <p class="mt-3"><img src="{{asset('images/user/' ~ user.photo)}}" height="150" alt="{{user.id}}"></p>
+                <p class="mt-3">
+                    <a href="{{path('user_account_modifier')}}" class="btn btn-warning text-white">Modifier</a>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#deleteUser" data-user={{user.id}} data-prenom={{user.prenom}} data-nom={{user.nom}}  class="btn btn-danger text-white modal-trigger">Supprimer</a>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow p-3" style="width: 35rem;">
+                    <div class="card-body">
+                        <h5 class="sous-titre text-center">Notre Equipe</h5>
+                        {% for user in users %}
+                            {% if user.active == true %}
+                                <div class="row mt-3">
+                                    <div class="col-md-3">
+                                        <p class="card-text">
+                                        {% if user.photo == null %}
+                                            <img src="{{asset('images/user/avatar.jpg')}}" height="50" class="rounded-circle" alt="{{user.id}}">
+                                        {% else %}
+                                            <img src="{{asset('images/user/' ~ user.photo)}}" height="50" class="rounded-circle" alt="{{user.id}}">
+                                        {% endif %}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-9 text-center">
+                                        <p><span class="strong">{{user.prenom}} {{user.nom}}</span></p>
+                                        <p><span class="form-text">{{user.email}}</span>
+                                        <span class="form-text">{{user.role}}</span></p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <p class="mt-3">Maria Del Mar Acosta Diaz, Malika El Mounzil, Ali Osman, Espérance Nikuze médiateurs sociaux La poste</p>
+                        <p class="mt-5">10 intervenants bénévoles</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% include "modal/supprimerUser.html.twig" %}
+
+{% endblock %}

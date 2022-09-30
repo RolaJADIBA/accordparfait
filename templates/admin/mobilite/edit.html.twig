@@ -1,0 +1,21 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Modifier Mobilite{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-md-8">
+
+            <h1>Modifier Mobilite</h1>
+
+            {{ include('admin/mobilite/_form.html.twig', {'button_label': 'Update'}) }}
+
+            <a href="{{ path('mobilite_index') }}" class="btn btn-warning btn-sm text-white">retour à la liste</a>
+
+            {{ include('admin/mobilite/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

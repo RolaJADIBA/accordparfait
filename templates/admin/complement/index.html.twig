@@ -1,0 +1,49 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Index des Complements{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-3">
+
+    <h3>Complément Linguistique pour l’Insertion Professionnelle</h3>
+<div class="table-responsive-sm">
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Images</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for complement in complements %}
+            <tr>
+                <td>{{ complement.id }}</td>
+                <td>{{ complement.titre }}</td>
+                <td>{{ complement.description }}</td>
+                <td>
+                    <img src="{{ asset('images/complement/' ~ complement.images|first) }}" height="100" alt="{{complement.id}}">
+                </td>
+                <td>
+                    <a href="{{ path('complement_show', {'id': complement.id}) }}" class="btn btn-info btn-sm text-white"><i class="fas fa-eye"></i></a>
+                    <a href="{{ path('complement_edit', {'id': complement.id}) }}" class="btn btn-secondary btn-sm"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <div class="col-md-2">
+        <a href="{{ path('complement_new') }}" class="btn btn-warning text-white">Créer un nouveau</a>
+    </div>
+    </div>
+</div>
+
+{% endblock %}

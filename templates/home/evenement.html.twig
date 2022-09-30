@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NOS EVENEMENTS{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+
+		<div class="row justify-content-center">
+            <div class="titre p-3 mt-5">
+                <h3 class="text-center">NOS EVENEMENTS</h3>
+            </div>
+
+            {% for evenement in evenements %}
+                    <div class="card mt-3 border border-0" style="width: 70rem;">
+                        <div class="card-body">
+                            <h5 class="card-title sous-titre">{{evenement.titre}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{evenement.date|date('d/m/Y')}}</h6>
+                            <p class="card-text">{{evenement.description}}</p>
+                            {% for image in evenement.images %}
+                            <a href="{{asset('images/evenements/' ~ image)}}">
+                                <img src="{{asset('images/evenements/' ~ image)}}" class="mb-2 mx-2 grid-item" height="170" alt="{{image}}">
+                            </a>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+	</div>
+{% include "footer/footer.html.twig" %}
+{% include "modal/evenement.html.twig" %}
+{% endblock %}

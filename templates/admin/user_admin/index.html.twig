@@ -1,0 +1,65 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Users index{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="mt-3">
+
+            <h3>Notre Equipe</h3>
+            <div class="table-responsive">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Prenom</th>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Mission</th>
+                            <th>Photo</th>
+                            <th>Active</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{user.id}}</td>
+                                <td>{{user.prenom}}</td>
+                                <td>{{user.nom}}</td>
+                                <td>{{user.email}}</td>
+                                <td>{{user.role}}</td>
+                                <td>
+                                    <img src="{{asset('images/user/' ~ user.photo)}}" height="50" alt="{{user.id}}">
+                                </td>
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" {{ (user.active) ? 'checked' : '' }} data-id="{{user.id}}">
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    window.onload = () =>{
+        let activer = document.querySelectorAll("[type=checkbox]");
+        for(let bouton of activer){
+            bouton.addEventListener("click", function (){
+                let xmlhttp = new XMLHttpRequest;
+                xmlhttp.open("get", `/admin/user/activer/${this.dataset.id}`)
+					xmlhttp.send()
+            })
+        }
+    }
+</script>
+{% endblock %}
+

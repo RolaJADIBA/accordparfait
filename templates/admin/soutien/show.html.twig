@@ -1,0 +1,50 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Soutien aux familles et à la parentalité{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-3">
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ soutien.id }}</td>
+                </tr>
+                {% if soutien.titre != null %}
+                    <tr>
+                        <th>Titre</th>
+                        <td>{{ soutien.titre }}</td>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <th>Description</th>
+                    <td>{{ soutien.description }}</td>
+                </tr>
+                {% if soutien.images != null %}
+                    <tr>
+                        <th>Images</th>
+                        <td>
+                        {# {{ soutien.images ? soutien.images|json_encode : '' }} #}
+                            {% for image in soutien.images %}
+                                <img src="{{ asset('images/soutien/' ~ image) }}" height="100" alt="{{soutien.id}}">
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <div class="col-md-2">
+
+            <a href="{{ path('soutien_index') }}" class="btn btn-warning btn-sm text-white">retour à la liste</a>
+
+            <a href="{{ path('soutien_edit', {'id': soutien.id}) }}" class="btn btn-secondary btn-sm">edit</a>
+
+            {{ include('admin/soutien/_delete_form.html.twig') }}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Nouveaux Jardin{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="mt-3">
+
+                <h1>Créer de nouveaux Jardin</h1>
+
+                {{ include('admin/jardin/_form.html.twig') }}
+
+                <a href="{{ path('jardin_index') }}" class="btn btn-warning text-white btn-sm">retour à la liste</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

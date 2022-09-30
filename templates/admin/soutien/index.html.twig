@@ -1,0 +1,51 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Soutien index{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="mt-3">
+
+            <h3>Soutien aux familles et à la parentalité</h3>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Images</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for soutien in soutiens %}
+                    <tr>
+                        <td>{{ soutien.id }}</td>
+                        <td>{{ soutien.titre }}</td>
+                        <td>{{ soutien.description }}</td>
+                        <td>
+                        {# {{ soutien.images ? soutien.images|json_encode : '' }} #}
+                            <img src="{{ asset('images/soutien/' ~ soutien.images|first) }}" height="100" alt="{{soutien.id}}">
+                        </td>
+                        <td>
+                            <a href="{{ path('soutien_show', {'id': soutien.id}) }}" class="btn btn-info btn-sm text-white"><i class="fas fa-eye"></i></a>
+                            <a href="{{ path('soutien_edit', {'id': soutien.id}) }}" class="btn btn-secondary btn-sm"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Aucun enregistrement trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="col-md-2">
+                <a href="{{ path('soutien_new') }}" class="btn btn-warning text-white">Créer un nouveau</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

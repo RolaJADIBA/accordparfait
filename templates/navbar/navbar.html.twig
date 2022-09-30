@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg navbar-light shadow" style="background-color: #cc00cc">
+<div class="container-fluid">
+  <a href="{{path('home')}}"><img src="{{ asset ('images/logoviolet3.png') }}" height="150" width="300" alt="logo"></a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav m-auto mb-2 mb-lg-0" >
+			<li class="nav-item">
+				<a class="nav-link" href="{{path('about')}}"><strong style="color: #fff">QUI SOMMES NOUS?</strong></a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff">
+					<strong style="color: #fff">NOS ACTIONS</strong>
+				</a>
+				<ul class="dropdown-menu dropaction" style="background-color: #ffccff" aria-labelledby="navbarDropdown">
+					<li>
+						<a class="dropdown-item" href="{{path('autonomie')}}">Autonomie et Insertion Sociale</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="{{path('complement')}}">Complément Linguistique pour l’Insertion Professionnelle</a>
+					</li>
+					{# <li><hr class="dropdown-divider"></li> #}
+					<li>
+						<a class="dropdown-item" href="{{path('delf')}}">Préparation au DELF</a>
+					</li>
+
+					<li>
+						<a class="dropdown-item" href="{{path('mobilite')}}">Mobilité</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="{{path('numerique')}}">Inclusion Numérique</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="{{path('jardin')}}">Jardin Solidaire</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="{{path('soutien')}}">Soutien aux familles et à la parentalité</a>
+					</li>
+				</ul>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{path('evenement')}}"><strong style="color: #fff">NOS EVENEMENTS</strong></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{path('contact')}}" ><strong style="color: #fff">NOUS CONTACTER</strong></a>
+			</li>
+		</ul>
+	</div>
+
+    <div class="nav-item dropdown ">
+      {% if app.user %}
+        <a aria-expanded="true" class="nav-link dropdown-toggle text-dark" id="dropdownNav" href="#" role="button" data-bs-toggle="dropdown">
+          Bienvenue,
+          {{ app.user.prenom }}</a>
+        <div class="dropdown-menu speciale" style="position: absolute; transform: translate3d(0px, 37px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start" aria-labelledby="dropdownNav">
+          <a class="dropdown-item text-muted border border-none" href="{{path('user_account')}}">Mon Compte</a>
+          <div class="dropdown-divider"></div>
+          {% if is_granted('ROLE_ADMIN') %}
+            <a class="dropdown-item text-warning border border-none" href="{{path('admin')}}">Administration</a>
+          {% endif %}
+          <a class="dropdown-item text-danger border border-none" href="{{ path('app_logout') }}">Déconnexion</a>
+        </div>
+      {% else %}
+        <a aria-expanded="true" aria-haspopup="true" class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button">
+          Connexion / inscription</a>
+        <div class="dropdown-menu" style="position: absolute; transform: translate3d(0px, 37px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start">
+          <a class="dropdown-item text-dark border border-none" href="{{ path('app_login') }}">Connexion</a>
+          <a class="dropdown-item text-dark border border-none" href="{{ path('app_register') }}">S'inscrire</a>
+        </div>
+      {% endif %}
+    </div>
+
+</div>
+
+</nav>
+
+{% block javascripts %}
+
+{% endblock %}

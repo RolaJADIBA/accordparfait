@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}L'Accord Parfait{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center about">
+
+            <div class="titre p-3 mt-5">
+                <h3 class="autTitre">QUI SOMMES-NOUS ?</h3>
+            </div>
+
+            <div class="col-lg-9 col-md-12  col-sm-12 mt-3 abouttext">
+                <p>L’Accord Parfait est une association loi 1901, créée en 2004, à l’initiative de Fatem Chaumont. Son but est d’aider à l’insertion sociale et professionnelle, de favoriser l’accès à la citoyenneté, de soutenir l’ouverture à la culture française par la connaissance de la langue française orale et écrite.</p>
+                <p>Notre méthodologie a été mise en place par les intervenants de l’association. Elle est le fruit de plusieurs années d’expérience. Elle répond aux exigences du Cadre Européen Commun de Référence pour les Langues (CECRL), et s’adapte aux besoins des apprenants. 5 niveaux d’apprentissage de la langue française sont proposés dans un esprit de progression.</p>
+                <p style="color: #cc00cc;"><strong>Vous venez d’arriver en France et/ou vous souhaitez maîtriser les bases de la langue française ?</strong></p>
+                <p>Dans notre association, vous pourrez bénéficier de :</p>
+                    <ul>
+                        <li><a href="http://accordparfait.test/autonomie/#1">Cours d’alphabétisation</a></li>
+                        <li><a href="http://accordparfait.test/autonomie/#2">Ateliers sociolinguistiques</a></li>
+                        <li><a href="http://accordparfait.test/autonomie/#3">Atelier graphie</a></li>
+                        <li><a href="{{path('autonomie')}}">Atelier oralité</a></li>
+                    </ul>
+                <p style="color: #cc00cc;"><strong>Vous cherchez du travail et/ou souhaitez renforcer vos connaissances en français, être plus à l’aise à l’entretien d’embauche et gagner en confiance en vous ?</strong></p>
+                <p>En vous inscrivant chez nous, vous pourrez bénéficier de :</p>
+                <ul>
+                    <li><a href="http://accordparfait.test/complement/#1">Complément Linguistique pour l’Insertion Professionnelle</a></li>
+                    <li><a href="http://accordparfait.test/complement/#3">Cours de Théâtre</a></li>
+                </ul>
+                <p style="color: #cc00cc;"><strong>Vous souhaitez préparer un examen de langue française ?</strong></p>
+                <p>Venez tester votre niveau et participer à nos :</p>
+                <ul>
+                    <li><a href="{{path('delf')}}">Atelier de préparation au DELF</a></li>
+                    <li><a href="{{path('delf')}}">DELF blanc</a></li>
+                </ul>
+                <p style="color: #cc00cc;"><strong>Vous souhaitez sortir en autonomie de votre quartier et vous rendre seul à l’heure et sans stress à un rendez-vous ? </strong></p>
+                <p>Chez nous, vous améliorerez votre mobilité</p>
+                <ul>
+                    <li><a href="http://accordparfait.test/mobilite/#1">En bus</a></li>
+                    <li><a href="http://accordparfait.test/mobilite/#2">A vélo</a></li>
+                </ul>
+                <p style="color: #cc00cc;"><strong>Vous souhaitez vous améliorer en informatique ? </strong></p>
+                <p>Nous vous proposons de participer à nos <a href="{{path('numerique')}}">ateliers d’inclusion numérique</a> de différents niveaux</p>
+                <p>Enfin, nous vous proposons :</p>
+                <ul>
+                    <li>Une écoute et un accompagnement dans leurs démarches administratives</li>
+                    <li><a href="{{path('jardin')}}">Un jardin solidaire</a></li>
+                    <li><a href="{{path('soutien')}}">Des actions de soutien aux familles et à la parentalité</a></li>
+                    <li>Des sorties culturelles</li>
+                </ul>
+                <a class="text-decoration-none" href="{{asset('RapportAnnuel.pdf')}}" download><h5 class="text-muted"><i class="fa fa-download" aria-hidden="true"></i>
+                    &nbsp;&nbsp;Rapport annuel 2021_LAccord Parfait</h5></a>
+            </div>
+
+            {# NOTRE EQUIPE #}
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <div class="card shadow p-3 mx-auto action" style="background-color: #ffccff">
+                    <div class="card-body">
+                        {# FATEM CHAUMONT #}
+                        <a href="{{asset('FatemZahraChaumont.pdf')}}" download>
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                            <img src="{{asset('images/fatem.png')}}" height="150" width="150" alt="fatem">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mt-3">
+                                            <h6><strong>Fatem Chaumont</strong></h6>
+                                            <span class="fs-6">Fondatrice de l’association l’Accord Parfait</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <h3 class="sous-titre text-center mt-3">Notre Equipe</h3>
+                        {% for user in users %}
+                            {% if user.active == true %}
+                                <div class="row mt-3">
+                                    <div class="col-md-3">
+                                        <p class="card-text">
+                                        {% if user.photo == null %}
+                                            <img src="{{asset('images/user/avatar.jpg')}}" height="50" class="rounded-circle" alt="{{user.id}}">
+                                        {% else %}
+                                            <img src="{{asset('images/user/' ~ user.photo)}}" height="50" class="rounded-circle" alt="{{user.id}}">
+                                        {% endif %}
+                                        </p>
+                                    </div>
+                                    <div class="col-md-9 text-center">
+                                        <p><span class="strong fs-5">{{user.prenom}} {{user.nom}}</span></p>
+                                        {# <p><span class="form-text">{{user.email}}</span> #}
+                                        <p><span class="form-text fs-6">{{user.role}}</span></p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        {# <p class="mt-3">Maria Del Mar Acosta Diaz, Malika El Mounzil, Ali Osman, Espérance Nikuze médiateurs sociaux La poste</p> #}
+                        <p class="mt-5">10 intervenants bénévoles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "footer/footer.html.twig" %}
+{% endblock %}

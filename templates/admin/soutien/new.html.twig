@@ -1,0 +1,21 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}nouveaux Soutien{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="mt-3">
+
+                <h3>Créer de nouveaux Soutien</h3>
+
+                {{ include('admin/soutien/_form.html.twig') }}
+
+                <a href="{{ path('soutien_index') }}" class="btn btn-warning text-white btn-sm">retour à la liste</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

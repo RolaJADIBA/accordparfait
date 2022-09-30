@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<main class="login">
+
+    <section>
+        <div class="imgBx">
+            <img src="{{asset('images/login.jpeg')}}" alt="logo">
+        </div>
+
+        <div class="contentBx">
+            <div class="formBx">
+                <h2>Se connecter</h2>
+
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            Vous êtes connecté en tant que
+                            {{ app.user.username }},
+                            <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                        </div>
+                    {% endif %}
+
+                    <div class="inputBx">
+                        <span>Email</span>
+                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                    </div>
+
+                    <div class="inputBx">
+                        <span>Mot de passe</span>
+                        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    <div class="inputBx">
+                        <button type="submit">Se connecter</button>
+                    </div>
+                </form>
+
+                <div class="inputBx">
+                    <p>Vous n'avez pas de compte ?<a href="{{ path('app_register') }}">S'inscrire</a>
+                    </p>
+                </div>
+
+                <div class="inputBx">
+                    <p>
+                        <a href="{{ path('app_forgot_password_request') }}">mot de passe oublié</a>
+                    </p>
+                </div>
+
+                <h3>connectez-vous avec les médias sociaux</h3>
+                <div class="sci d-flex justify-content-center">
+                    <span>
+                        <i class="fab fa-facebook-f"></i>
+                    </span>
+                    <span>
+                        <i class="fab fa-twitter"></i>
+                    </span>
+                    <span>
+                        <i class="fab fa-instagram"></i>
+                    </span>
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
+
+</main>
+{% endblock %}

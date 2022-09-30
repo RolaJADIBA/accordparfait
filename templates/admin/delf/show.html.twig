@@ -1,0 +1,40 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Préparation au DELF{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row mt-3">
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ delf.id }}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td>
+                        <img src="{{asset('images/delf/') ~ delf.image}}" height="100" alt="{{delf.image}}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>Desciption</th>
+                    <td>{{ delf.desciption }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="col-md-2">
+
+            <a href="{{ path('delf_index') }}" class="btn btn-warning btn-sm text-white">retour à la liste</a>
+
+            <a href="{{ path('delf_edit', {'id': delf.id}) }}" class="btn btn-secondary btn-sm">edit</a>
+            
+            {{ include('admin/delf/_delete_form.html.twig') }}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

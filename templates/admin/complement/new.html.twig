@@ -1,0 +1,20 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Nouveaux Complement{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="mt-3">
+
+        <h1>Créer de nouveaux Complement</h1>
+
+        {{ include('admin/complement/_form.html.twig') }}
+
+        <a href="{{ path('complement_index') }}" class="btn btn-warning text-white btn-sm">retour à la liste</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Bonjour AdminController!{% endblock %}
+
+{% block body %}
+
+
+{# MAIN #}
+
+<div class="main">
+
+	<div class="topbar">
+		<div class="toggle" onclick="toggleMenu();"></div>
+	</div>
+	
+    {# {% for message in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% endfor %} #}
+
+		{# CARDBOX #}
+		<div class="cardBox">
+
+			<div class="card">
+				<a href="{{path('user_admin')}}" class="text-muted text-decoration-none">
+					<div>
+						<div class="numbers">Users</div>
+					</div>
+					<div class="iconBox">
+						<i class="fas fa-users"></i>
+					</div>
+				</a>
+			</div>
+
+            <div class="card">
+                <a href="{{path('evenements_index')}}" class="text-muted text-decoration-none">
+                    <div>
+                        <div class="numbers">Evènements</div>
+                    </div>
+                    <div class="iconBox">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                </a>
+            </div>
+
+
+			<div class="card">
+				<a href="{{path('autonomie_index')}}" class="text-muted text-decoration-none">
+					<div>
+						<div class="numbers">Insertion Sociale</div>
+					</div>
+					<div class="iconBox">
+						<i class="fas fa-list-alt"></i>
+					</div>
+			</div>
+
+			<div class="card">
+				<a href="{{path('complement_index')}}" class="text-muted text-decoration-none">
+					<div>
+						<div class="numbers">Complément Linguistique</div>
+					</div>
+					<div class="iconBox">
+						<i class="fa fa-language"></i>
+					</div>
+			</div>
+
+			<div class="card">
+				<a href="{{path('delf_index')}}" class="text-muted text-decoration-none">
+					<div>
+						<div class="numbers">Préparation au DELF</div>
+					</div>
+					<div class="iconBox">
+						<i class="fa fa-deaf"></i>
+					</div>
+			</div>
+
+			<div class="card">
+				<a href="{{path('mobilite_index')}}" class="text-muted text-decoration-none">
+					<div>
+						<div class="numbers">Mobilité</div>
+					</div>
+					<div class="iconBox">
+						<i class="fa fa-bus"></i>
+					</div>
+			</div>
+			<div class="card">
+				<a href="{{path('numerique_index')}}" class="text-muted text-decoration-none">
+					<div>
+						<div class="numbers">Inclusion Numérique</div>
+					</div>
+					<div class="iconBox">
+						<i class="fa fa-laptop"></i>
+					</div>
+			</div>
+			<div class="card">
+				<a href="{{path('jardin_index')}}" class="text-muted text-decoration-none">
+					<div>
+						<div class="numbers">Jardin Solidaire</div>
+					</div>
+					<div class="iconBox">
+						<i class="fa fa-leaf"></i>
+					</div>
+			</div>
+			<div class="card">
+				<a href="{{path('soutien_index')}}" class="text-muted text-decoration-none">
+					<div>
+						<div class="numbers">Soutien aux familles</div>
+					</div>
+					<div class="iconBox">
+						<i class="fa fa-child"></i>
+					</div>
+			</div>
+
+		</div>
+</div>
+
+{% endblock %}

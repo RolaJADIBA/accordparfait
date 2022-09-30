@@ -1,0 +1,50 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Jardin Solidaire{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="mt-3">
+
+            <h3>Jardin Solidaire</h3>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Description</th>
+                        <th>Images</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for jardin in jardins %}
+                    <tr>
+                        <td>{{ jardin.id }}</td>
+                        <td>{{ jardin.description }}</td>
+                        {# <td>{{ jardin.images ? jardin.images|json_encode : '' }}</td> #}
+                        <td>
+                            <img src="{{ asset('images/jardin/' ~ jardin.images|first) }}" height="100" alt="{{jardin.id}}">
+                        </td>
+                        <td>
+                            <a href="{{ path('jardin_show', {'id': jardin.id}) }}" class="btn btn-info btn-sm text-white"><i class="fas fa-eye"></i></a>
+                            <a href="{{ path('jardin_edit', {'id': jardin.id}) }}" class="btn btn-secondary btn-sm"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucun enregistrement trouvé</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="col-md-2">
+                <a href="{{ path('jardin_new') }}" class="btn btn-warning text-white">Créer un nouveau</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

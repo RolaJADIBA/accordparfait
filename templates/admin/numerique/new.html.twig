@@ -1,0 +1,65 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Nouveaux Numerique{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="mt-3">
+
+                <h3>Créer de nouveaux Numerique</h3>
+
+                {{ include('admin/numerique/_form.html.twig') }}
+                {# {{ form_start(form) }}
+                    {{ form_row(form.titre) }}
+                    {{ form_row(form.descriptions) }}
+                    <div id="numerique" data-prototype= "{{ form_row(form.images.vars.prototype)|e('html_attr') }}">
+                    {{ form_row(form.images) }}
+                    <span></span>
+                    </div>
+                {{ form_end(form) }} #}
+                <a href="{{ path('numerique_index') }}" class="btn btn-warning text-white btn-sm">retour à la liste</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{# {% block javascripts %}
+    <script>
+        let collection, buttonAjout, span;
+        window.onload = () =>{
+            collection = document.querySelector("#numerique");
+            span = collection.querySelector("span");
+            buttonAjout = document.createElement("button");
+            buttonAjout.className = "btn btn-secondray";
+            buttonAjout.innerText = "Ajouter des images";
+
+            let nouveauButton = span.append(buttonAjout);
+
+            collection.dataset.index = collection.querySelectorAll("input").length;
+
+            buttonAjout.addEventListener("click", function () {
+                addButton(collection, nouveauButton);
+            });
+
+            function addButton(collection, nouveauButton){
+                let prototype = collection.dataset.prototype;
+
+                let index = collection.dataset.index;
+
+                prototype = prototype.replace(/__name__/g, index);
+
+                let content = document.createElement("html");
+
+                content.innerHTML = prototype;
+                
+                let newForm = content.querySelector("div")
+
+                
+            }
+        }
+    </script>
+{% endblock %} #}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inclusion Numérique{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+
+        <div class="titre p-3 mt-5">
+            <h3 class='autTitre'>Inclusion Numérique</h3>
+        </div>
+
+        <div class="col-lg-9 col-md-12 col-sm-12">
+            <div class="mt-1">
+                <p class="complementp">L'action propose trois différents ateliers. Les groupes sont composés de 5 participants en moyenne. Ces derniers sont identifiés au moment de l'inscription à l'association mais aussi dans le cadre des ateliers linguistiques. Les ateliers suivants sont proposés en fonction des besoins et du niveau en informatique des personnes intéressées.</p>
+            </div>
+
+            {% for numerique in numeriques %}
+                <div class="card border border-0 mt-3 incCard">
+                    <p class="card-text"><span>{{numerique.titre}} : </span>{{numerique.descriptions}}</p>
+                </div>
+            {% endfor %}
+
+            <div class="mt-3">
+                <p class="complementp">Les ateliers se déroulent au Centre René Peltier dans le quartier des Chartreux et s’organisent par session de 4 semaines à raison de 2 cours d’1h30 par semaine (12h au total par atelier)</p> 
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="image mt-3">
+                <a href="{{asset('images/numerique/numerique1.jpg')}}">
+                    <img src="{{asset('images/numerique/numerique1.jpg')}}" class="mx-1 my-1 grid-item" height="150" alt="atelier1">
+                </a>
+                <a href="{{asset('images/numerique/numerique2.jpg' )}}">
+                    <img src="{{asset('images/numerique/numerique2.jpg')}}"class="mx-1 my-1 grid-item" height="150" alt="atelier1">
+                </a>
+            </div>
+            <div class="image mt-3">
+            <a href="{{asset('images/numerique/numerique3.jpg' )}}">
+                <img src="{{asset('images/numerique/numerique3.jpg')}}" class="mx-1 my-1 grid-item" height="150" alt="atelier1">
+            </a>
+            <a href="{{asset('images/numerique/numerique4.jpg' )}}">
+                <img src="{{asset('images/numerique/numerique4.jpg')}}" class="mx-1 my-1 grid-item" height="150" alt="atelier1">
+            </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% include "footer/footer.html.twig" %}
+{% endblock %}

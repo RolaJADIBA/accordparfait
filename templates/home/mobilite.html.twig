@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mobilité{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+
+        <div class="titre p-3 mt-5">
+            <h3 class="autTitre">Mobilité</h3>
+        </div>
+
+        <div class="col-lg-9 col-md-12 col-sm-12">
+            {% for mobilite in mobilites %}
+                <div class="card border border-0 mobCard" id="{{mobilite.id}}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{mobilite.titre}}</h5>
+                        <p class="card-text">{{mobilite.description}}</p>
+                        {% for image in mobilite.images %}
+                        <a href="{{asset('images/mobilite/' ~ image)}}">
+                            <img src="{{ asset('images/mobilite/' ~ image)}}" class="mx-3 my-3 grid-item" height="150" alt="{{mobilite.titre}}">
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-lg-3 col-md-12">
+       {# NOS ACTIONS #}
+        <div class="card mx-auto action" style="background-color: #ffccff">
+            <div class="card-body">
+                <h5 class="card-title sou-titre text-center"><strong>NOS ACTIONS</strong></h5>
+                <p class="card-text">
+                    <ul class="list-group">
+                        <a href="{{path('autonomie')}}" class="text-decoration-none"><li class="list-group-item">Autonomie et Insertion Sociale</li></a>
+                        <a href="{{path('complement')}}" class="text-decoration-none"><li class="list-group-item">Complément Linguistique pour l’Insertion Professionnelle</li></a>
+                        <a href="{{path('delf')}}" class="text-decoration-none"><li class="list-group-item">Préparation au DELF</li></a>
+                        <a href="{{path('mobilite')}}" class="text-decoration-none"><li class="list-group-item">Mobilité</li></a>
+                        <a href="{{path('numerique')}}" class="text-decoration-none"><li class="list-group-item">Inclusion Numérique</li></a>
+                        <a href="{{path('jardin')}}" class="text-decoration-none"><li class="list-group-item">Jardin Solidaire</li></a>
+                        <a href="{{path('soutien')}}" class="text-decoration-none"><li class="list-group-item">Soutien aux familles et à la parentalité</li></a>
+                    </ul>
+                </p>
+            </div>
+        </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% include "footer/footer.html.twig" %}
+{% endblock %}
